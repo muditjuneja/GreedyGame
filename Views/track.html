@@ -1,0 +1,39 @@
+<center>
+  <h2>Music Tracks (click to edit)</h2></center>
+
+<div class="row">
+  <div class="form-group col-md-6 col-md-offset-3">
+    <input type="text" class="form-control" placeholder="Search" ng-model="query">
+  </div>
+</div>
+
+<div class="row">
+
+  <ul class="list-group">
+    <li class="list-group-item col-md-6 col-md-offset-3" ng-click="chooseTrack(track);" dir-paginate="track in tracks |filter : query | itemsPerPage: 10">{{track.title}} <span show-Genres></span><span class="star-rating" star-rating></span></li>
+
+  </ul>
+  <dir-pagination-controls class="col-md-6 col-md-offset-4"></dir-pagination-controls>
+
+</div>
+<div class="row">
+  <form class="col-md-6 col-md-offset-3">
+    <div class="form-group">
+      <button type="button" ng-click="showAddUpdate=true;isUpdate=false;" class="btn btn-default">Add new Track</button>
+    </div>
+    <div class="row" ng-show="showAddUpdate;">
+      <div class="form-group">
+        <input type="text" ng-model="track.title" class="form-control" placeholder="Title">
+      </div>
+
+      <div class="form-group">
+        <input type="text" ng-model="track.rating" class="form-control" placeholder="Rating">
+      </div>
+      <div class="form-group">
+        <input type="text" ng-model="track.genreIds" class="form-control" placeholder="Genres (csv)">
+      </div>
+      <input type="submit" value="Add" class="btn btn-default" ng-hide="isUpdate" ng-click="addTrack(track);" />
+      <input type="submit" value="Update" ng-show="isUpdate" class="btn btn-default" ng-click="updateTrack(track);" />
+  </form>
+  </div>
+</div>

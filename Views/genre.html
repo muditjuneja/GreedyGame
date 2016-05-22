@@ -1,0 +1,26 @@
+<center>
+  <h2>Genres (click to edit)</h2></center>
+<div class="row">
+
+  <ul class="list-group">
+    <li class="list-group-item col-md-6 col-md-offset-3" ng-click="chooseGenre(genre);" dir-paginate="genre in genres | itemsPerPage: 10">{{genre.name}} </li>
+
+  </ul>
+  <dir-pagination-controls class="col-md-6 col-md-offset-4"></dir-pagination-controls>
+
+</div>
+<div class="row">
+  <form class="col-md-6 col-md-offset-3">
+    <div class="form-group">
+      <button type="button" ng-click="showAddUpdate=true;isUpdate=false;" class="btn btn-default">Add new Genre</button>
+    </div>
+    <div class="row" ng-show="showAddUpdate;">
+      <div class="form-group">
+        <input type="text" ng-model="genre.name" class="form-control" placeholder="Name">
+      </div>
+
+      <input type="submit" class="btn btn-default" value="Add" ng-hide="isUpdate" ng-click="addGenre(genre);" />
+      <input type="submit" value="Update" ng-show="isUpdate" class="btn btn-default" ng-click="updateGenre(genre);" />
+  </form>
+  </div>
+</div>
